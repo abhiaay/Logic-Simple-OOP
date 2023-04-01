@@ -45,6 +45,7 @@ Output: [{"root":"Hello"}]
 `"<div sc-prop sc-alias="" sc-type="Organization"><div sc-name="Alice">Hello <i sc-name="Wonderland">World</i></div></div>"`
 <br>
 Output (aligned for readable purpose):<br>
+
 ```json
 [
     {
