@@ -87,4 +87,47 @@ function get_schema($htmlTags)
     }
     return json_encode($tags, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 }
+
+/**
+ * Sum of given pattern show in text given
+ * @param string $text
+ * @param string $pattern
+ */
+function pattern_count($text, $pattern) : int
+{
+    // return 0 if pattern is empty string
+    if($pattern === "") return 0;
+
+    // get length of text
+    $textLength = 0;
+    while(isset($text[$textLength])) {
+        $textLength++;
+    }
+
+    // get length of pattern
+    $patternLength = 0;
+    while(isset($pattern[$patternLength])) {
+        $patternLength++;
+    }
+
+    $patternFound = 0;
+
+    // calculate sum pattern inside text
+    for($i = 0; $i <= $textLength - $patternLength; $i++) {
+        // initialize cursor text to empty string eacy loop
+        $cursorText = '';
+
+        // loop through text to get cursor text based on pattern length
+        for($j = $i; $j < $i + $patternLength; $j++) {
+            $cursorText .= $text[$j];
+        }
+
+        // check if cursor text is same as pattern and increment pattern found
+        if($cursorText === $pattern) {
+            $patternFound++;
+        }
+    }
+
+    return $patternFound;
+}
 ?>
